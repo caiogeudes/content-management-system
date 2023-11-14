@@ -3,6 +3,9 @@ const knex = require('../connections/knexConnection');
 
 const verificateLoggedUser = async (req, res, next) => {
     const { authorization } = req.headers;
+    if (!authorization) {
+        return res.status(400).json({ mensagem: 'O token deve ser fornecido.' })
+    }
     const token = authorization.split(' ')[1];
     try {
         const { id } = await jwt.verify(token, process.env.JWT_KEY);

@@ -3,7 +3,8 @@ const bcrypt = require('bcrypt');
 const knex = require('../connections/knexConnection');
 
 const validateNewUser = async (req, res, next) => {
-    const { name, email, password } = req.body
+    const { name, email, password } = req.body;
+    console.log(req.userData);
     try {
         const searchEmail = await knex('users').where('email', email);
         if (searchEmail.length > 0) {
