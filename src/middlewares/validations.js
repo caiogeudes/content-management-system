@@ -35,7 +35,17 @@ const validateLogin = async (req, res, next) => {
     }
 }
 
+const validateContent = async (req, res, next) => {
+    const { title, content } = req.body;
+    if (!title && !content) {
+        return res.status(400).json({ mensamge: "É necessário enviar pelo ao menos o campo 'Title' ou 'Content'" })
+    } else {
+        next();
+    }
+}
+
 module.exports = {
     validateNewUser,
-    validateLogin
+    validateLogin,
+    validateContent
 }
