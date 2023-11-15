@@ -1,5 +1,5 @@
 const express = require('express');
-const { createUser } = require('./controllers/user');
+const { createUser, getUserInfo } = require('./controllers/user');
 const { login } = require('./controllers/login');
 const { validateNewUser, validateLogin, validateContent } = require('./middlewares/validations');
 const { verificateLoggedUser, verifyContentId } = require('./middlewares/verifications');
@@ -13,5 +13,6 @@ rota.post('/content', validateContent, uploadContent);
 rota.put('/content/:contentId', verifyContentId, validateContent, updateContent);
 rota.patch('/content/:contentId', verifyContentId, validateContent, editContent);
 rota.delete('/content/:contentId', verifyContentId, deleteContent);
+rota.get('/user', getUserInfo);
 
 module.exports = rota;
