@@ -24,7 +24,15 @@ const createUser = async (req, res) => {
 const getUserInfo = async (req, res) => {
     const user = req.user;
     try {
-        const contentsFound = await knex('content').where('user_id', user.id).returning('*');
+        let contentsFile = await knex('content_file').where('user_id', user.id);
+        let contentsFound = await knex('content').where('user_id', user.id).returning('*');
+        for (let i = 0; i < contentsFound.length; i++) {
+            for (let file of contentsFile) {
+                if (file.content_id === contentsFound[i].id) {
+                    contentsFound[i].file = file.file;
+                }
+            }
+        }
         return res.status(200).json({
             user,
             contents: contentsFound
