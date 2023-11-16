@@ -17,7 +17,6 @@ npm run dev
 * Publicar um conteúdo.
 * Editar, modificar e excluir um conteúdo.
 * Visualizar o seus conteúdos e de outros usuários.
-* Upload de arquivos
 
 ### Biliotecas npm utilizadas
 * express

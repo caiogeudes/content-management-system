@@ -54,7 +54,7 @@ const deleteContent = async (req, res) => {
     const { contentId } = req.params;
     try {
         await knex('content').delete().where('id', contentId);
-        return res.status(204);
+        return res.status(200).json({ mensagem: 'Conteúdo excluído' });
     } catch (error) {
         console.log(error.message);
         return res.status(500).json({ mensagem: 'Erro interno do servidor.' });
@@ -66,6 +66,7 @@ const contentFeed = async (req, res) => {
     if (!page) {
         page = 1;
     }
+
     try {
         const feed = await knex('content').limit(10).offset((10 * page) - 10).returning('*');
         if (feed.length <= 0) {
@@ -73,6 +74,7 @@ const contentFeed = async (req, res) => {
         } else {
             return res.status(200).json(feed);
         }
+
     } catch (error) {
         console.log(error.message);
         return res.status(500).json({ mensagem: 'Erro interno do servidor.' });
