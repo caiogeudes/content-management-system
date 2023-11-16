@@ -6,7 +6,7 @@ Após fazer o clone do repositório, executar o seguinte comando para instalar a
 ```
 npm i
 ```
-Logo após a instalação das bibliotecas, devemos configurar nossas variáveis de ambiente. Para isso, deixei disponibilizado um arquivo chamado `.env`, onde está configurado nossas variáveis.
+Logo após a instalação das bibliotecas, devemos configurar nossas variáveis de ambiente. Para isso, deixei disponibilizado um arquivo chamado `.envexample`, onde está configurado nossas variáveis.
 
 Em seguida, vamos inicializar o servidor com:
 ```
